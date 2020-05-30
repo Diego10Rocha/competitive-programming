@@ -1,3 +1,7 @@
 #Types
 in
 out
+
+#Compilation
+
+*.out
