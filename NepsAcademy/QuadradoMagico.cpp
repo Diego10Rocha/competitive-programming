@@ -6,61 +6,54 @@ using namespace std;
 
 int main(){
 	desync;
-	int n, soma2=0, soma3=0;
-	const int  soma=0;
-	bool perfeito=true, linhas = true, colunas = true;
+	int n, soma = 0, soma2 = 0, soma3 = 0;
+	bool diagonais = false, linhas_colunas = true;
+	
 	cin >> n;
 	
 	int matriz[n][n];
 	
-	for(int i=0;i<n;i++){
-		for(int j=0;j<n;j++){
+	for(int i = 0; i < n; i++){
+		for(int j = 0; j < n; j++){
 			cin >> matriz[i][j];
 		}
 	}
 	
-	for(int i=0;i<n;i++){
-	
-		soma = 0;
-		soma3 = 0;
+	for(int i = 0; i < n; i++){
 		
-		for(int j=0;j<n;j++){
+		for(int j = 0; j < n; j++){
 		
 			soma2 += matriz[i][j];
 			soma3 += matriz[j][i];
 			
 		}
-		if(i==1)
+		if(i==0)
 		
 			soma = soma2;
 			
-		if(soma2 != soma && i>0)
+		if(soma2 != soma || soma3 != soma)
 		
-			linhas = false;
-			
-		if(soma3 != soma && i>0)
+			linhas_colunas = false;
 		
-			colunas = false;
-			
-		soma2 = soma;
-		soma4 = soma3;
+		soma2 = 0;
+		soma3 = 0;
 		
 	}
 	
 	for(int i=0;i<n;i++){
 	
-		soma5 += matriz[i][i];
-		soma6 += matriz[n-1-i][i];
+		soma2 += matriz[i][i];
+		soma3 += matriz[n-1-i][i];
 		
 	}
 	
-	if(soma5 == soma6)
+	if(soma2 == soma && soma3 == soma)
 	
 		diagonais = true;
 	
-	if(diagonais && linhas && colunas)
+	if(diagonais && linhas_colunas)
 	
-		cout << soma5;
+		cout << soma << endl;
 	else
-		cout << "-1";
+		cout << "-1" <<endl;
 }

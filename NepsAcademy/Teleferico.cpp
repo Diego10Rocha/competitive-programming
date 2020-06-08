@@ -7,12 +7,15 @@ using namespace std;
 int main(){
 	desync;
 	
-	int c, a, qtd, qtd2;
+	int c, a, qtd;
 	
 	cin >> c >> a;
+	
+	c--;
 	qtd = a / c;
-	qtd2 = (a+qtd)/c + 1;
-	
-	cout << qtd2;
-	
+	if(a % c == 0)
+		cout << qtd << endl;
+		
+	else
+		cout << qtd + 1 << endl;
 }
